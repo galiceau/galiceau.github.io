@@ -1,0 +1,683 @@
+/* ==========================================================================
+   Portfolio — Jocelyn Fontaine (Galiceau)
+   styles/main.css — Variables CSS, reset et styles de base
+   ========================================================================== */
+
+/* ---------- CSS Custom Properties ---------- */
+:root {
+  /* Couleurs principales */
+  --color-navy: #0a0a1e;
+  --color-purple: #1e0a1e;
+  --color-bordeaux: #6b1d2a;
+  --color-white: #ffffff;
+  --color-light-gray: #f5f5f5;
+
+  /* Couleurs dérivées */
+  --color-text-on-dark: #f0f0f0;
+  --color-text-on-light: #1a1a2e;
+  --color-accent: #9b3a4a;
+
+  /* Typographie */
+  --font-primary: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  --font-heading: 'Space Grotesk', 'Inter', sans-serif;
+
+  /* Espacement */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 2rem;
+  --spacing-lg: 4rem;
+  --spacing-xl: 6rem;
+
+  /* Largeur max du contenu */
+  --content-max-width: 1200px;
+  --content-padding: var(--spacing-md);
+}
+
+/* ---------- CSS Reset ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* ---------- Global Styles ---------- */
+body {
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--color-text-on-light);
+  background-color: var(--color-white);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---------- Typography ---------- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h1 { font-size: 3rem; }
+h2 { font-size: 2rem; }
+h3 { font-size: 1.25rem; }
+
+p {
+  margin-bottom: var(--spacing-sm);
+}
+
+/* ---------- Links ---------- */
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--color-accent);
+}
+
+/* Focus visible for keyboard navigation — 4.5:1+ contrast */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--color-bordeaux);
+  outline-offset: 2px;
+}
+
+/* ---------- Images ---------- */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ---------- Lists ---------- */
+ul, ol {
+  list-style: none;
+}
+
+/* ---------- Buttons ---------- */
+button {
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* ---------- Layout — White margins framing the central content zone ---------- */
+main {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+}
+
+/* Dark central content zone (Zone_Contenu_Centrale) */
+main > section {
+  background-color: var(--color-navy);
+  color: var(--color-text-on-dark);
+  padding: var(--spacing-lg) var(--content-padding);
+}
+
+/* Alternate subtle variation for visual rhythm */
+main > section:nth-child(even) {
+  background-color: var(--color-purple);
+}
+
+/* Section headings inside dark zone — white text, high contrast */
+main > section h2 {
+  color: var(--color-white);
+  margin-bottom: var(--spacing-md);
+}
+
+/* ---------- Header ---------- */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--color-navy);
+  color: var(--color-white);
+}
+
+/* ---------- Footer ---------- */
+footer {
+  background-color: var(--color-navy);
+  color: var(--color-text-on-dark);
+  text-align: center;
+  padding: var(--spacing-md) var(--content-padding);
+  font-size: 0.875rem;
+}
+
+/* ---------- Selection ---------- */
+::selection {
+  background-color: var(--color-bordeaux);
+  color: var(--color-white);
+}
+
+/* ---------- Scrollbar (subtle, optional) ---------- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-light-gray);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-navy);
+  border-radius: 4px;
+}
+
+/* ==========================================================================
+   2.2 — Navigation, Sections & Components
+   ========================================================================== */
+
+/* ---------- Navigation ---------- */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-sm) var(--content-padding);
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+}
+
+.nav-logo {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-white);
+}
+
+.nav-logo:hover {
+  color: var(--color-accent);
+}
+
+.nav-links {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.nav-links a {
+  color: var(--color-text-on-dark);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  padding: var(--spacing-xs) 0;
+  position: relative;
+  transition: color 0.2s ease;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--color-bordeaux);
+  transition: width 0.25s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--color-white);
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
+}
+
+/* Hamburger — hidden by default, visible < 768px (task 2.3 media queries) */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  padding: var(--spacing-xs);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburger-line {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--color-white);
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* ---------- Section Hero ---------- */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hero-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+#hero h1 {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  color: var(--color-white);
+}
+
+.hero-pseudo {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  color: var(--color-accent);
+  letter-spacing: 0.05em;
+  margin-bottom: 0;
+}
+
+.hero-title {
+  font-size: 1.125rem;
+  color: var(--color-text-on-dark);
+  margin-bottom: 0;
+}
+
+.hero-motto {
+  font-style: italic;
+  color: var(--color-text-on-dark);
+  opacity: 0.8;
+  margin-bottom: var(--spacing-sm);
+}
+
+.hero-links {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.hero-links a {
+  display: inline-block;
+  padding: 0.625rem 1.5rem;
+  border: 1px solid var(--color-bordeaux);
+  border-radius: 4px;
+  color: var(--color-white);
+  font-weight: 500;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.hero-links a:hover {
+  background-color: var(--color-bordeaux);
+  color: var(--color-white);
+}
+
+/* ---------- Section Compétences — Skills Grid ---------- */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: var(--spacing-md);
+}
+
+.skill-category h3 {
+  color: var(--color-white);
+  margin-bottom: var(--spacing-sm);
+  padding-bottom: var(--spacing-xs);
+  border-bottom: 2px solid var(--color-bordeaux);
+}
+
+.skill-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+}
+
+.skill-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background-color: rgba(107, 29, 42, 0.25);
+  border: 1px solid var(--color-bordeaux);
+  border-radius: 999px;
+  font-size: 0.8125rem;
+  color: var(--color-text-on-dark);
+  transition: background-color 0.2s ease;
+}
+
+.skill-badge:hover {
+  background-color: rgba(107, 29, 42, 0.5);
+}
+
+/* ---------- Section Projets — Projects Grid ---------- */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--spacing-md);
+}
+
+/* ---------- Section Blog — Blog Grid ---------- */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--spacing-md);
+}
+
+/* ---------- Project & Article Cards (shared base) ---------- */
+.project-card,
+.article-card {
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 8px;
+  padding: var(--spacing-md);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project-card:hover,
+.article-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.project-card h3,
+.article-card h3 {
+  color: var(--color-white);
+  margin-bottom: var(--spacing-xs);
+}
+
+.project-card p,
+.article-card p {
+  color: var(--color-text-on-dark);
+  font-size: 0.9375rem;
+}
+
+.project-card a,
+.article-card a {
+  color: var(--color-accent);
+  font-weight: 500;
+}
+
+.project-card a:hover,
+.article-card a:hover {
+  color: var(--color-white);
+}
+
+/* ---------- Loading Placeholder ---------- */
+.loading-placeholder {
+  text-align: center;
+  padding: var(--spacing-lg) 0;
+  color: var(--color-text-on-dark);
+  opacity: 0.6;
+}
+
+.loading-placeholder p {
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+/* ---------- Section Contact ---------- */
+.contact-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+  text-align: center;
+}
+
+.contact-links {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.contact-links a {
+  display: inline-block;
+  padding: 0.625rem 1.5rem;
+  border: 1px solid var(--color-bordeaux);
+  border-radius: 4px;
+  color: var(--color-white);
+  font-weight: 500;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.contact-links a:hover {
+  background-color: var(--color-bordeaux);
+  color: var(--color-white);
+}
+
+.contact-location {
+  color: var(--color-text-on-dark);
+  font-size: 1rem;
+  opacity: 0.85;
+}
+
+/* ---------- Footer (extended) ---------- */
+footer {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+}
+
+/* ==========================================================================
+   2.3 — Responsive Media Queries
+   Exigences : 3.4, 9.1, 9.5
+   ========================================================================== */
+
+/* ---------- Focus-visible for all interactive elements ---------- */
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--color-bordeaux);
+  outline-offset: 2px;
+}
+
+/* ---------- Mobile — max-width: 767px ---------- */
+@media (max-width: 767px) {
+  /* Navigation — hamburger visible, links become vertical dropdown */
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: var(--color-navy);
+    padding: var(--spacing-sm) var(--content-padding);
+    gap: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links li a {
+    display: block;
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  nav {
+    position: relative;
+  }
+
+  /* Typography — reduced sizes */
+  h1 {
+    font-size: 2rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  #hero h1 {
+    font-size: clamp(1.75rem, 8vw, 2.5rem);
+  }
+
+  /* Hero — reduced height */
+  #hero {
+    min-height: 80vh;
+  }
+
+  /* Sections — reduced padding */
+  main > section {
+    padding: var(--spacing-md) var(--spacing-sm);
+  }
+
+  /* Grids — single column */
+  .skills-grid,
+  .projects-grid,
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Tablet — 768px to 1024px ---------- */
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* Grids — 2 columns */
+  .skills-grid,
+  .projects-grid,
+  .blog-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Adjust section padding */
+  main > section {
+    padding: var(--spacing-md) var(--content-padding);
+  }
+}
+
+/* ---------- Desktop — above 1024px ---------- */
+@media (min-width: 1025px) {
+  /* Grids — cap at 3 columns */
+  .skills-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  }
+
+  .projects-grid,
+  .blog-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ==========================================================================
+   9.1 — Dynamic Card Styles (generated by JS modules)
+   ========================================================================== */
+
+/* ---------- Project Card — Topic Badges ---------- */
+.project-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-xs);
+  margin: var(--spacing-sm) 0;
+}
+
+.topic-badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  background-color: rgba(107, 29, 42, 0.2);
+  border: 1px solid rgba(107, 29, 42, 0.4);
+  border-radius: 999px;
+  font-size: 0.75rem;
+  color: var(--color-accent);
+}
+
+/* ---------- Project Card — Meta (language + stars) ---------- */
+.project-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin: var(--spacing-sm) 0;
+  font-size: 0.8125rem;
+  color: var(--color-text-on-dark);
+  opacity: 0.75;
+}
+
+.project-language {
+  font-weight: 500;
+}
+
+.project-stars {
+  font-size: 0.8125rem;
+}
+
+/* ---------- Project & Article Links ---------- */
+.project-link,
+.article-link {
+  display: inline-block;
+  margin-top: var(--spacing-xs);
+  padding: 0.4rem 1rem;
+  border: 1px solid var(--color-bordeaux);
+  border-radius: 4px;
+  color: var(--color-white);
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.project-link:hover,
+.article-link:hover {
+  background-color: var(--color-bordeaux);
+  color: var(--color-white);
+}
+
+/* ---------- Article Card — Thumbnail ---------- */
+.article-thumbnail {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 4px 4px 0 0;
+  margin: calc(-1 * var(--spacing-md));
+  margin-bottom: var(--spacing-sm);
+  width: calc(100% + 2 * var(--spacing-md));
+}
+
+/* ---------- Article Card — Date & Excerpt ---------- */
+.article-date {
+  font-size: 0.8125rem;
+  color: var(--color-text-on-dark);
+  opacity: 0.65;
+  margin-bottom: var(--spacing-xs);
+}
+
+.article-excerpt {
+  font-size: 0.9375rem;
+  color: var(--color-text-on-dark);
+  opacity: 0.85;
+  margin-bottom: var(--spacing-sm);
+}
+
+/* ---------- Status Messages (empty, error, fallback) ---------- */
+.empty-message,
+.error-message,
+.fallback-message {
+  text-align: center;
+  padding: var(--spacing-md);
+  color: var(--color-text-on-dark);
+  opacity: 0.7;
+  font-size: 0.9375rem;
+  grid-column: 1 / -1;
+}
+
+.fallback-message a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.fallback-message a:hover {
+  color: var(--color-white);
+}

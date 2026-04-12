@@ -1,0 +1,34 @@
+[
+  {
+    "name": "aws-security-audit",
+    "description": "Outil d'audit de sécurité pour les comptes AWS",
+    "html_url": "https://github.com/galiceau/aws-security-audit",
+    "topics": ["aws", "security", "python", "cloudtrail"],
+    "language": "Python",
+    "stargazers_count": 5
+  },
+  {
+    "name": "terraform-aws-baseline",
+    "description": "Module Terraform pour configurer une baseline sécurisée sur AWS",
+    "html_url": "https://github.com/galiceau/terraform-aws-baseline",
+    "topics": ["terraform", "aws", "iac", "security"],
+    "language": "HCL",
+    "stargazers_count": 3
+  },
+  {
+    "name": "cloud-monitoring-dashboard",
+    "description": "Dashboard de monitoring pour infrastructures cloud avec alertes automatisées",
+    "html_url": "https://github.com/galiceau/cloud-monitoring-dashboard",
+    "topics": ["aws", "monitoring", "cloudwatch", "python"],
+    "language": "Python",
+    "stargazers_count": 2
+  },
+  {
+    "name": "iam-policy-analyzer",
+    "description": "Analyseur de politiques IAM pour détecter les permissions excessives",
+    "html_url": "https://github.com/galiceau/iam-policy-analyzer",
+    "topics": ["aws", "iam", "security", "javascript"],
+    "language": "JavaScript",
+    "stargazers_count": 1
+  }
+]
