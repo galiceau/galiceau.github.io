@@ -234,6 +234,20 @@ nav {
   width: 100%;
 }
 
+/* Language switch */
+.lang-switch a {
+  padding: 0.25rem 0.75rem;
+  border: 1px solid var(--color-bordeaux);
+  border-radius: 4px;
+  font-size: 0.8125rem;
+  transition: background-color 0.2s ease;
+}
+
+.lang-switch a:hover {
+  background-color: var(--color-bordeaux);
+  color: var(--color-white);
+}
+
 /* Hamburger — hidden by default, visible < 768px (task 2.3 media queries) */
 .hamburger {
   display: none;

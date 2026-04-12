@@ -49,7 +49,7 @@ async function fetchGitHubProjects(username) {
  */
 async function loadFallbackProjects() {
   try {
-    const response = await fetch('data/fallback-projects.json');
+    const response = await fetch('/data/fallback-projects.json');
     return await response.json();
   } catch (error) {
     console.warn('Impossible de charger le fallback :', error);
