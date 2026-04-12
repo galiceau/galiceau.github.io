@@ -270,6 +270,15 @@ nav {
   gap: var(--spacing-sm);
 }
 
+.hero-avatar {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 3px solid var(--color-bordeaux);
+  object-fit: cover;
+  margin-bottom: var(--spacing-sm);
+}
+
 #hero h1 {
   font-size: clamp(2.5rem, 6vw, 4rem);
   color: var(--color-white);
