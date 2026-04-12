@@ -35,14 +35,14 @@ async function loadProjects() {
  */
 async function loadBlogArticles() {
   try {
-    var articles = await fetchMediumArticles('https://joce.cloud/feed');
+    var articles = await fetchMediumArticles('https://medium.joce.cloud/feed');
     var container = document.getElementById('blog-grid');
     if (!container) return;
 
     if (articles === null) {
       container.innerHTML =
         '<p class="fallback-message">Impossible de charger les articles. ' +
-        'Retrouvez-les sur <a href="https://joce.cloud" target="_blank" rel="noopener noreferrer">joce.cloud</a>.</p>';
+        'Retrouvez-les sur <a href="https://medium.joce.cloud" target="_blank" rel="noopener noreferrer">medium.joce.cloud</a>.</p>';
       return;
     }
 
@@ -53,7 +53,7 @@ async function loadBlogArticles() {
     if (container) {
       container.innerHTML =
         '<p class="fallback-message">Impossible de charger les articles. ' +
-        'Retrouvez-les sur <a href="https://joce.cloud" target="_blank" rel="noopener noreferrer">joce.cloud</a>.</p>';
+        'Retrouvez-les sur <a href="https://medium.joce.cloud" target="_blank" rel="noopener noreferrer">medium.joce.cloud</a>.</p>';
     }
   }
 }
