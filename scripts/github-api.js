@@ -27,14 +27,17 @@ async function fetchGitHubProjects(username) {
 
     const repos = await response.json();
 
-    repos.sort((a, b) => {
+    // Exclure le repo du site lui-même
+    const filtered = repos.filter(r => r.name !== 'galiceau.github.io');
+
+    filtered.sort((a, b) => {
       if (b.stargazers_count !== a.stargazers_count) {
         return b.stargazers_count - a.stargazers_count;
       }
       return new Date(b.updated_at) - new Date(a.updated_at);
     });
 
-    return repos;
+    return filtered;
   } catch (error) {
     console.warn('API GitHub indisponible, chargement du fallback :', error);
     return loadFallbackProjects();
