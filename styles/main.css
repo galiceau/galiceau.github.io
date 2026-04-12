@@ -312,6 +312,18 @@ nav {
   margin-bottom: 0;
 }
 
+.hero-badge {
+  display: inline-block;
+  padding: 0.3rem 1rem;
+  background-color: rgba(107, 29, 42, 0.3);
+  border: 1px solid var(--color-bordeaux);
+  border-radius: 999px;
+  font-size: 0.875rem;
+  color: var(--color-white);
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
 .hero-motto {
   font-style: italic;
   color: var(--color-text-on-dark);
