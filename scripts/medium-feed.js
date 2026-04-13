@@ -125,8 +125,9 @@ function cacheArticles(cacheKey, articles) {
  * @returns {string} HTML de la carte
  */
 function renderArticleCard(article) {
+  var isFr = document.documentElement.lang === 'fr';
   var date = new Date(article.pubDate);
-  var formattedDate = date.toLocaleDateString('fr-FR');
+  var formattedDate = date.toLocaleDateString(isFr ? 'fr-FR' : 'en-US');
 
   return (
     '<div class="article-card">' +
@@ -136,7 +137,7 @@ function renderArticleCard(article) {
       '<h3>' + article.title + '</h3>' +
       '<p class="article-date">' + formattedDate + '</p>' +
       '<p class="article-excerpt">' + article.description + '</p>' +
-      '<a href="' + article.link + '" target="_blank" rel="noopener noreferrer" class="article-link">Lire l\'article</a>' +
+      '<a href="' + article.link + '" target="_blank" rel="noopener noreferrer" class="article-link">' + (isFr ? 'Lire l\'article' : 'Read article') + '</a>' +
     '</div>'
   );
 }

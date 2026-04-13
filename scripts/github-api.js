@@ -67,12 +67,13 @@ async function loadFallbackProjects() {
  * @returns {string} HTML de la carte
  */
 function renderProjectCard(project) {
-  const description = project.description || 'Pas de description';
-  const topics = project.topics || [];
-  const language = project.language || '';
-  const stars = project.stargazers_count || 0;
+  var isFr = document.documentElement.lang === 'fr';
+  var description = project.description || (isFr ? 'Pas de description' : 'No description');
+  var topics = project.topics || [];
+  var language = project.language || '';
+  var stars = project.stargazers_count || 0;
 
-  const topicBadges = topics
+  var topicBadges = topics
     .map(function (topic) {
       return '<span class="topic-badge">' + topic + '</span>';
     })
@@ -87,7 +88,7 @@ function renderProjectCard(project) {
         (language ? '<span class="project-language">' + language + '</span>' : '') +
         '<span class="project-stars">⭐ ' + stars + '</span>' +
       '</div>' +
-      '<a href="' + project.html_url + '" target="_blank" rel="noopener noreferrer" class="project-link">Voir sur GitHub</a>' +
+      '<a href="' + project.html_url + '" target="_blank" rel="noopener noreferrer" class="project-link">' + (isFr ? 'Voir sur GitHub' : 'View on GitHub') + '</a>' +
     '</div>'
   );
 }
